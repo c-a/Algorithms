@@ -32,9 +32,9 @@ int compare(int a, int b)
 int
 main (int argc, char *argv[])
 {
-  RedBlackBST<int, int, int (*)(int a, int b) > bst(&compare);
+  RedBlackBST<int, int, int (&)(int a, int b) > bst(compare);
   int i;
-  RedBlackBST<int, int, int (*)(int a, int b) >::iterator iter;
+  RedBlackBST<int, int, int (&)(int a, int b) >::const_iterator iter;
 
   for (i = 0; i < 1000; i++)
     bst.put(i, i);

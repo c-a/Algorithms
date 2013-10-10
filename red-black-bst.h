@@ -35,15 +35,15 @@ public:
   typedef V keytype;
   typedef Compare keycompare;
 
-  typedef Iterator iterator;
+  typedef Iterator const_iterator;
 
   explicit RedBlackBST(Compare compare = Compare()) : root_(0), compare_(compare) {}
 
-  iterator begin() {
+  const_iterator begin() {
     return Iterator(this, min(root_));
   }
 
-  iterator end() {
+  const_iterator end() {
     return Iterator(this, 0);
   }
 
@@ -52,7 +52,7 @@ public:
     root_->color = BLACK;
   }
 
-  iterator get(const keytype& key) {
+  const_iterator get(const keytype& key) {
     Node* x = root_;
 
     while (x)
@@ -225,7 +225,7 @@ private:
       Iterator() : bst_(0), node_(0) {};
       Iterator(RedBlackBST *bst, Node* node) : bst_(bst), node_(node) {};
 
-      value_type& operator*() {
+      const value_type& operator*() {
         return node_->value;
       }
 
